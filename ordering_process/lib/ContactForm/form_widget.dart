@@ -1,108 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'custom_text_form_field.dart';
 
 class FormWidget extends StatelessWidget {
+  final String title;
   final GlobalKey<FormState> formKey;
-  const FormWidget({required this.formKey, Key? key}) : super(key: key);
+  const FormWidget({required this.title, required this.formKey, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          child: Column(
-            children: <Widget>[
-              Padding(
+      key: formKey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Empfänger'),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 24),
+                ),
               ),
-              CustomTextFormField(
-                hintText: 'Vorname',
-                regex: '[^a-zA-Z]',
-                errorMessage: 'Bitte geben Sie einen gültigen Vornamen ein',
-              ),
-              CustomTextFormField(
-                hintText: 'Nachname',
-                regex: '[^a-zA-Z]',
-                errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    flex: 5,
-                    child: CustomTextFormField(
-                      hintText: 'Straße',
-                      regex: '[^a-zA-Z]',
-                      errorMessage:
-                          'Bitte geben Sie einen gültigen Nachnamen ein',
-                    ),
+            ),
+            CustomTextFormField(
+              label: 'Vorname',
+              regex: '[^a-zA-Z]',
+              errorMessage: 'Bitte geben Sie einen gültigen Vornamen ein',
+            ),
+            CustomTextFormField(
+              label: 'Nachname*',
+              regex: '[^a-zA-Z]',
+              errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
+            ),
+            Row(
+              children: [
+                Flexible(
+                  flex: 5,
+                  child: CustomTextFormField(
+                    label: 'Straße*',
+                    regex: '[^a-zA-Z]',
+                    errorMessage:
+                        'Bitte geben Sie einen gültigen Nachnamen ein',
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Flexible(
+                  flex: 1,
+                  child: CustomTextFormField(
+                    label: 'Nr.*',
+                    regex: '[^0-9a-z]',
+                    errorMessage:
+                        'Bitte geben Sie einen gültigen Nachnamen ein',
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: CustomTextFormField(
-                      hintText: 'Nr.',
-                      regex: '[^a-zA-Z]',
-                      errorMessage:
-                          'Bitte geben Sie einen gültigen Nachnamen ein',
-                    ),
-                  ),
-                ],
-              ),
-              CustomTextFormField(
-                hintText: 'PLZ',
-                //TODO replace Regex for PLZ
-                regex: '[^[A-Z]{1,10}\$]',
-                errorMessage: 'Bitte geben Sie einen gültigen PLZ ein',
-              ),
-              CustomTextFormField(
-                hintText: 'Wohnort',
-                regex: '[^a-zA-Z]',
-                errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
-              ),
-              CustomTextFormField(
-                hintText: 'Email',
-                regex: '[^a-zA-Z]',
-                errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
-              ),
-            ],
-          ),
-        ));
-  }
-}
-
-class CustomTextFormField extends StatelessWidget {
-  String hintText;
-  String regex;
-  String errorMessage;
-  CustomTextFormField({
-    required this.hintText,
-    required this.regex,
-    required this.errorMessage,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0),
-      child: TextFormField(
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.lightBlue, width: 2),
-          ),
+                ),
+              ],
+            ),
+            CustomTextFormField(
+              label: 'PLZ*',
+              //TODO replace Regex for PLZ
+              regex: '[^0-9]',
+              errorMessage: 'Bitte geben Sie einen gültigen PLZ ein',
+              textLength: 5,
+              textType: TextInputType.number,
+            ),
+            CustomTextFormField(
+              label: 'Wohnort*',
+              regex: '[^a-zA-Z]',
+              errorMessage: 'Bitte geben Sie einen gültigen Wohnort ein',
+            ),
+            CustomTextFormField(
+              label: 'Email',
+              regex: '[^a-zA-Z]',
+              errorMessage: 'Bitte geben Sie einen gültigen Email ein',
+            ),
+          ],
         ),
-        validator: (value) {
-          RegExp nameRegex = RegExp(regex);
-          if (value == null || value.isEmpty || nameRegex.hasMatch(value)) {
-            return errorMessage;
-          } else {
-            return null;
-          }
-        },
       ),
     );
   }

@@ -17,46 +17,48 @@ class _ShippingLabelState extends State<ShippingLabel> {
       appBar: AppBar(
         title: Text('Paket Größe auswählen'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              children: <Widget>[
-                CustomRadioListTile(
-                  title: 'XS',
-                  value: '10',
-                  callback: (value) => setNewValue(value),
-                  groupValue: _newValue,
-                ),
-                CustomRadioListTile(
-                  title: 'S',
-                  value: '20',
-                  callback: (value) => setNewValue(value),
-                  groupValue: _newValue,
-                ),
-                CustomRadioListTile(
-                  title: 'M',
-                  value: '30',
-                  callback: (value) => setNewValue(value),
-                  groupValue: _newValue,
-                ),
-                CustomRadioListTile(
-                  title: 'L',
-                  value: '40',
-                  callback: (value) => setNewValue(value),
-                  groupValue: _newValue,
-                ),
-              ],
-            ),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  CustomRadioListTile(
+                    title: 'XS',
+                    value: '10',
+                    callback: (value) => setNewValue(value),
+                    groupValue: _newValue,
+                  ),
+                  CustomRadioListTile(
+                    title: 'S',
+                    value: '20',
+                    callback: (value) => setNewValue(value),
+                    groupValue: _newValue,
+                  ),
+                  CustomRadioListTile(
+                    title: 'M',
+                    value: '30',
+                    callback: (value) => setNewValue(value),
+                    groupValue: _newValue,
+                  ),
+                  CustomRadioListTile(
+                    title: 'L',
+                    value: '40',
+                    callback: (value) => setNewValue(value),
+                    groupValue: _newValue,
+                  ),
+                ],
+              ),
+              NavigationButtons(
+                backButton: () => Navigator.of(context).pop(),
+                nextButton: () => navigateToContactForm(context),
+              ),
+            ],
           ),
-          Expanded(
-            child: NavigationButtons(
-              backButton: () => Navigator.of(context).pop(),
-              nextButton: () => navigateToContactForm(context),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

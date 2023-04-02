@@ -4,7 +4,8 @@ import 'package:ordering_process/navigation_buttons.dart';
 import 'form_widget.dart';
 
 class ContactForm extends StatefulWidget {
-  final _formKey = GlobalKey<FormState>();
+  final _formKeyE = GlobalKey<FormState>();
+  final _formKeyA = GlobalKey<FormState>();
   ContactForm({Key? key}) : super(key: key);
 
   @override
@@ -18,20 +19,25 @@ class _ContactFormState extends State<ContactForm> {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Column(
-          children: [
-            FormWidget(formKey: widget._formKey),
-            Expanded(
-              child: NavigationButtons(
-                backButton: () => Navigator.of(context).pop(),
-                nextButton: () {
-                  if (widget._formKey.currentState!.validate()) {
-                    print('successfull');
-                  }
-                },
-              ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                FormWidget(title: 'Empfänger', formKey: widget._formKeyE),
+                FormWidget(title: 'Absender', formKey: widget._formKeyA),
+                NavigationButtons(
+                  backButton: () => Navigator.of(context).pop(),
+                  nextButton: () {
+                    if (widget._formKeyE.currentState!.validate() &&
+                        widget._formKeyA.currentState!.validate()) {
+                      print('successfull');
+                    }
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
