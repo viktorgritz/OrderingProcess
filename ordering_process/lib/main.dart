@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordering_process/ContactForm/contact_form.dart';
 import 'package:ordering_process/ShippingLabel/shipping_label.dart';
 import 'package:ordering_process/home_screen.dart';
 
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
       ),
       home: const HomeScreen(title: 'Flutter Dev Challenge'),
-      routes: {'shipping_label': (context) => const ShippingLabel()},
+      routes: {
+        '/shipping_label': (context) => const ShippingLabel(),
+        '/contact_form': (context) => ContactForm(),
+      },
     );
   }
 }

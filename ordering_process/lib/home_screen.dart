@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () =>
-                  Navigator.of(context).pushNamed('shipping_label'),
+                  Navigator.of(context).pushNamed('/shipping_label'),
               child: Text('Versandlabel erstellen'),
             ),
           ],
