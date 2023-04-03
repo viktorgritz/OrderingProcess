@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ordering_process/Model/total_information.dart';
+import 'package:ordering_process/model/person.dart';
 import 'package:ordering_process/navigation_buttons.dart';
+import 'package:provider/provider.dart';
 
 import 'form_widget.dart';
 
 class ContactForm extends StatefulWidget {
   final _formKeyE = GlobalKey<FormState>();
   final _formKeyA = GlobalKey<FormState>();
+  late Person recipient;
+  late Person sender;
   ContactForm({Key? key}) : super(key: key);
 
   @override
@@ -15,7 +21,7 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as String;
+    final shippingLabel = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -24,15 +30,33 @@ class _ContactFormState extends State<ContactForm> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                FormWidget(title: 'Empfänger', formKey: widget._formKeyE),
-                FormWidget(title: 'Absender', formKey: widget._formKeyA),
-                NavigationButtons(
-                  backButton: () => Navigator.of(context).pop(),
-                  nextButton: () {
-                    if (widget._formKeyE.currentState!.validate() &&
-                        widget._formKeyA.currentState!.validate()) {
-                      print('successfull');
-                    }
+                FormWidget(
+                  title: 'Empfänger',
+                  formKey: widget._formKeyE,
+                ),
+                FormWidget(
+                  title: 'Absender',
+                  formKey: widget._formKeyA,
+                ),
+                Consumer<TotalInformation>(
+                  builder: (context, totalInformation, child) {
+                    totalInformation.label = shippingLabel;
+                    return NavigationButtons(
+                      backButton: () => Navigator.of(context).pop(),
+                      nextButton: () {
+                        if (widget._formKeyE.currentState!.validate() &&
+                            widget._formKeyA.currentState!.validate()) {
+                          //print(person.firstName);
+                          //print(person.firstName);
+
+                          Navigator.of(context).pushNamed('/overview_screen',
+                              arguments: totalInformation);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: 'Something went wrong, please try again');
+                        }
+                      },
+                    );
                   },
                 ),
               ],

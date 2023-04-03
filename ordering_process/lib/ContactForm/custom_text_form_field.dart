@@ -7,12 +7,16 @@ class CustomTextFormField extends StatelessWidget {
   int textLength;
   TextInputType textType;
   String label;
+  bool isRequired;
+  Function(String) callback;
   CustomTextFormField({
     required this.regex,
     required this.errorMessage,
+    required this.label,
+    required this.callback,
     this.textType = TextInputType.text,
     this.textLength = 200,
-    required this.label,
+    this.isRequired = true,
     Key? key,
   }) : super(key: key);
 
@@ -32,9 +36,19 @@ class CustomTextFormField extends StatelessWidget {
         ),
         validator: (value) {
           RegExp nameRegex = RegExp(regex);
-          if (value == null || value.isEmpty || nameRegex.hasMatch(value)) {
+          if ((value == null || value.isEmpty || nameRegex.hasMatch(value)) &&
+              isRequired) {
+            return errorMessage;
+          } else if (value != null &&
+              value.isNotEmpty &&
+              !isRequired &&
+              //TODO maybe replace negation
+              !nameRegex.hasMatch(value)) {
             return errorMessage;
           } else {
+            if (value != null) {
+              callback(value);
+            }
             return null;
           }
         },
