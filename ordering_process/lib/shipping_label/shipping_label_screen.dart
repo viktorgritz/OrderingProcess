@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ordering_process/Model/label.dart';
+import 'package:ordering_process/generated/l10n.dart';
 import 'package:ordering_process/navigation_buttons.dart';
 
 import 'group_button_item.dart';
@@ -27,7 +28,7 @@ class _ShippingLabelScreenState extends State<ShippingLabelScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Paket Größe auswählen'),
+        title: Text(S.of(context).shippingLabelScreenAppBarTitle),
       ),
       body: Container(
         color: Colors.grey[200],
@@ -73,7 +74,7 @@ class _ShippingLabelScreenState extends State<ShippingLabelScreen> {
       Navigator.of(context).pushNamed('/contact_form', arguments: _newValue);
     } else {
       Fluttertoast.showToast(
-        msg: 'Bitte wählen Sie ein Label aus',
+        msg: S.of(context).shippingLabelToastMessage,
         backgroundColor: Colors.deepOrange,
       );
     }

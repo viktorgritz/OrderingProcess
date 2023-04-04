@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'generated/l10n.dart';
+
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title});
-  final String title;
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(S.of(context).homeScreenAppBarTitle),
       ),
       body: Container(
         color: Colors.grey[200],
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ElevatedButton(
                   onPressed: () =>
                       Navigator.of(context).pushNamed('/shipping_label'),
-                  child: const Text('Versandlabel erstellen'),
+                  child: Text(S.of(context).createLabelButtonTitle),
                 ),
               ],
             ),

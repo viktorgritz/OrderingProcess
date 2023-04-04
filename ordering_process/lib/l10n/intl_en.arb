@@ -1,0 +1,9 @@
+{
+    "@_Home_Screen": {},
+    "homeScreenAppBarTitle": "Flutter Dev Challenge",
+    "createLabelButtonTitle": "Create label",
+
+    "@_Shipping_Label_Screen": {},
+    "shippingLabelScreenAppBarTitle": "Select package size",
+    "shippingLabelToastMessage": "Please select a label"
+}
