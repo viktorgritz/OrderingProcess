@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ordering_process/Model/label.dart';
 import 'package:ordering_process/Model/total_information.dart';
+import 'package:ordering_process/constants/enums.dart';
+import 'package:ordering_process/generated/l10n.dart';
 import 'package:ordering_process/model/person.dart';
 import 'package:ordering_process/navigation_buttons.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +27,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
     final shippingLabel = ModalRoute.of(context)!.settings.arguments as Label;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kontaktformular'),
+        title: Text(S.of(context).contactFormAppBarTitle),
       ),
       body: Center(
         child: Container(
@@ -36,12 +38,14 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
               child: Column(
                 children: [
                   FormWidget(
-                    title: 'Empfänger',
+                    title: S.of(context).recipientTitle,
                     formKey: widget._formKeyE,
+                    personType: PersonType.recipient,
                   ),
                   FormWidget(
-                    title: 'Absender',
+                    title: S.of(context).senderTitle,
                     formKey: widget._formKeyA,
+                    personType: PersonType.sender,
                   ),
                   Consumer<TotalInformation>(
                     builder: (context, totalInformation, child) {
@@ -58,7 +62,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                             );
                           } else {
                             Fluttertoast.showToast(
-                              msg: 'Bitte versuchen Sie es nochmal',
+                              msg: S.of(context).contactFormToastMessage,
                               backgroundColor: Colors.deepOrange,
                             );
                           }

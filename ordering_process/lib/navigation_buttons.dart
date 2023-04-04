@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordering_process/generated/l10n.dart';
 
 class NavigationButtons extends StatelessWidget {
   final Function backButton;
@@ -21,13 +22,13 @@ class NavigationButtons extends StatelessWidget {
             onPressed: () {
               backButton();
             },
-            child: Text('Zurück'),
+            child: Text(S.of(context).backButtonTitle),
           ),
           ElevatedButton(
             onPressed: () {
               nextButton();
             },
-            child: Text('Weiter'),
+            child: Text(S.of(context).nextButtonTitle),
           ),
         ],
       ),

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/total_information.dart';
 import 'package:ordering_process/constants/app_constants.dart';
+import 'package:ordering_process/constants/enums.dart';
+import 'package:ordering_process/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import 'custom_text_form_field.dart';
 
 class FormWidget extends StatelessWidget {
   final String title;
+  final PersonType personType;
   final GlobalKey<FormState> formKey;
   const FormWidget({
     required this.title,
     required this.formKey,
     Key? key,
+    required this.personType,
   }) : super(key: key);
 
   @override
@@ -36,19 +40,19 @@ class FormWidget extends StatelessWidget {
                   ),
                 ),
                 CustomTextFormField(
-                  label: 'Vorname (Optional)',
+                  label: S.of(context).firstnameTitle,
                   regex: FormRegex.plainTextRegex,
-                  errorMessage: 'Bitte geben Sie einen gültigen Vornamen ein',
+                  errorMessage: S.of(context).firstnameErrorMessage,
                   isRequired: false,
-                  callback: (value) => title == 'Empfänger'
+                  callback: (value) => personType == PersonType.recipient
                       ? totalInformation.recipient.firstName = value
                       : totalInformation.sender.firstName = value,
                 ),
                 CustomTextFormField(
-                  label: 'Nachname*',
+                  label: S.of(context).lastnameTitle,
                   regex: FormRegex.plainTextRegex,
-                  errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
-                  callback: (value) => title == 'Empfänger'
+                  errorMessage: S.of(context).lastnameErrorMessage,
+                  callback: (value) => personType == PersonType.recipient
                       ? totalInformation.recipient.lastName = value
                       : totalInformation.sender.lastName = value,
                 ),
@@ -57,11 +61,10 @@ class FormWidget extends StatelessWidget {
                     Flexible(
                       flex: 5,
                       child: CustomTextFormField(
-                        label: 'Straße*',
+                        label: S.of(context).streetTitle,
                         regex: FormRegex.streetRegex,
-                        errorMessage:
-                            'Bitte geben Sie einen gültigen Straße ein',
-                        callback: (value) => title == 'Empfänger'
+                        errorMessage: S.of(context).streetErrorMessage,
+                        callback: (value) => personType == PersonType.recipient
                             ? totalInformation.recipient.street = value
                             : totalInformation.sender.street = value,
                       ),
@@ -72,11 +75,10 @@ class FormWidget extends StatelessWidget {
                     Flexible(
                       flex: 1,
                       child: CustomTextFormField(
-                        label: 'Nr.*',
+                        label: S.of(context).numberTitle,
                         regex: FormRegex.numberRegex,
-                        errorMessage:
-                            'Bitte geben Sie einen gültigen Nachnamen ein',
-                        callback: (value) => title == 'Empfänger'
+                        errorMessage: S.of(context).numberErrorMessage,
+                        callback: (value) => personType == PersonType.recipient
                             ? totalInformation.recipient.houseNumber = value
                             : totalInformation.sender.houseNumber = value,
                       ),
@@ -84,29 +86,29 @@ class FormWidget extends StatelessWidget {
                   ],
                 ),
                 CustomTextFormField(
-                  label: 'PLZ*',
+                  label: S.of(context).postcodeTitle,
                   regex: FormRegex.postcodeRegex,
-                  errorMessage: 'Bitte geben Sie einen gültigen PLZ ein',
+                  errorMessage: S.of(context).postcodeErrorMessage,
                   textLength: 5,
                   textType: TextInputType.number,
-                  callback: (value) => title == 'Empfänger'
+                  callback: (value) => personType == PersonType.recipient
                       ? totalInformation.recipient.postcode = value
                       : totalInformation.sender.postcode = value,
                 ),
                 CustomTextFormField(
-                  label: 'Wohnort*',
+                  label: S.of(context).cityTitle,
                   regex: FormRegex.plainTextRegex,
-                  errorMessage: 'Bitte geben Sie einen gültigen Wohnort ein',
-                  callback: (value) => title == 'Empfänger'
+                  errorMessage: S.of(context).cityErrorMessage,
+                  callback: (value) => personType == PersonType.recipient
                       ? totalInformation.recipient.city = value
                       : totalInformation.sender.city = value,
                 ),
                 CustomTextFormField(
-                  label: 'Email (Optional)',
+                  label: S.of(context).emailTitle,
                   regex: FormRegex.emailRegex,
-                  errorMessage: 'Bitte geben Sie einen gültigen Email ein',
+                  errorMessage: S.of(context).emailErrorMessage,
                   isRequired: false,
-                  callback: (value) => title == 'Empfänger'
+                  callback: (value) => personType == PersonType.recipient
                       ? totalInformation.recipient.email = value
                       : totalInformation.sender.email = value,
                 ),

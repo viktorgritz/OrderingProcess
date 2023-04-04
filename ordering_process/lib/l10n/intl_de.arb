@@ -5,5 +5,55 @@
 
     "@_Shipping_Label_Screen": {},
     "shippingLabelScreenAppBarTitle": "Paket Größe auswählen",
-    "shippingLabelToastMessage": "Bitte wählen Sie ein Label aus"
+    "shippingLabelToastMessage": "Bitte wählen Sie ein Label aus",
+
+    "@_Group_Button_Item": {},
+    "sizeTitle": "Größe: {size}",
+    "weightTitle": "Gewicht: {weight} kg",
+    "priceTitle": "Preis: {price} Euro",
+
+    "@_Navigation_Buttons": {},
+    "backButtonTitle": "Zurück",
+    "nextButtonTitle": "Weiter",
+
+    "@_Contact_Form": {},
+    "contactFormAppBarTitle": "Kontaktformular",
+    "recipientTitle": "Empfänger",
+    "senderTitle": "Absender",
+    "contactFormToastMessage": "Bitte versuchen Sie es nochmal",
+
+    "@_Form_Widget": {},
+    "firstnameTitle": "Vorname (Optional)",
+    "lastnameTitle": "Nachname*",
+    "streetTitle": "Straße*",
+    "numberTitle": "Nr.*",
+    "postcodeTitle": "PLZ*",
+    "cityTitle": "Wohnort*",
+    "emailTitle": "E-Mail (Optional)",
+    "firstnameErrorMessage": "Bitte geben Sie einen gültigen Vornamen ein",
+    "lastnameErrorMessage": "Bitte geben Sie einen gültigen Nachnamen ein",
+    "streetErrorMessage": "Bitte geben Sie einer gültigen Straße ein",
+    "numberErrorMessage": "Bitte geben Sie einer gültigen Hausnummer ein",
+    "postcodeErrorMessage": "Bitte geben Sie einen gültigen PLZ ein",
+    "cityErrorMessage": "Bitte geben Sie einen gültigen Wohnort ein",
+    "emailErrorMessage": "Bitte geben Sie einen gültigen E-Mail ein",
+
+    "@_Personal_Total_Data_View": {},
+    "firstnameOverviewTitle": "Vorname: ",
+    "lastnameOverviewTitle": "Nachname: ",
+    "streetOverviewTitle": "Straße: ",
+    "numberOverviewTitle": "Hausnummer: ",
+    "postcodeOverviewTitle": "PLZ: ",
+    "cityOverviewTitle": "Wohnort: ",
+    "emailOverviewTitle": "E-Mail: ",
+
+    "@_Overview_Screen": {},
+    "overviewAppbarTitle": "Übersicht",
+    "labelOverviewTitle": "Label:",
+    "sizeOverviewTitle": "Größe: ",
+    "weightOverviewTitle": "Gewicht: ",
+    "weightValueOverviewTitle": " kg",
+    "priceOverviewTitle": "Preis: ",
+    "priceValueOverviewTitle": " €",
+    "createLabelButtonTitle": "Paketschein erstellen"
 }

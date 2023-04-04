@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/label.dart';
+import 'package:ordering_process/generated/l10n.dart';
 
 class GroupButtonItem extends StatelessWidget {
   final bool isSelected;
@@ -48,9 +49,9 @@ class GroupButtonItem extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text('Größe: ${labelItem.size}'),
-            Text('Gewicht:  ${labelItem.weight} kg'),
-            Text('Preis:  ${labelItem.preis} Euro'),
+            Text(S.of(context).sizeTitle(labelItem.size)),
+            Text(S.of(context).weightTitle(labelItem.weight)),
+            Text(S.of(context).priceTitle(labelItem.preis)),
           ],
         ),
       ),

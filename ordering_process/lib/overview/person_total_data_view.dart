@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/person.dart';
+import 'package:ordering_process/generated/l10n.dart';
 
 class PersonTotalDataView extends StatelessWidget {
   const PersonTotalDataView({
@@ -16,13 +17,25 @@ class PersonTotalDataView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TotalDataItem(label: 'Vorname', value: person.firstName ?? ''),
-          TotalDataItem(label: 'Nachname', value: person.lastName),
-          TotalDataItem(label: 'Straße', value: person.street),
-          TotalDataItem(label: 'Hausnummer', value: person.houseNumber),
-          TotalDataItem(label: 'PLZ', value: person.postcode),
-          TotalDataItem(label: 'Wohnort', value: person.city),
-          TotalDataItem(label: 'Email', value: person.email ?? ''),
+          TotalDataItem(
+              label: S.of(context).firstnameOverviewTitle,
+              value: person.firstName ?? ''),
+          TotalDataItem(
+              label: S.of(context).lastnameOverviewTitle,
+              value: person.lastName),
+          TotalDataItem(
+              label: S.of(context).streetOverviewTitle, value: person.street),
+          TotalDataItem(
+              label: S.of(context).numberOverviewTitle,
+              value: person.houseNumber),
+          TotalDataItem(
+              label: S.of(context).postcodeOverviewTitle,
+              value: person.postcode),
+          TotalDataItem(
+              label: S.of(context).cityOverviewTitle, value: person.city),
+          TotalDataItem(
+              label: S.of(context).emailOverviewTitle,
+              value: person.email ?? ''),
         ],
       ),
     );
@@ -47,7 +60,7 @@ class TotalDataItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('$label : '),
+            Text('$label'),
             Text(value),
           ],
         ),

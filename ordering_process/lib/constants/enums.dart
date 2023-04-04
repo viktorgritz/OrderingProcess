@@ -1,0 +1,1 @@
+enum PersonType { recipient, sender }

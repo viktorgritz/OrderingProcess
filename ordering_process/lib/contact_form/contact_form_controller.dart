@@ -8,7 +8,7 @@ class ContactFormController {
     Function(String) callback,
   ) {
     RegExp nameRegex = RegExp(regex);
-    if (label.contains('Email')) {
+    if (label.contains('E-Mail')) {
       return validateEmail(value, nameRegex, errorMessage, callback);
     }
     if ((value == null || value.trim().isEmpty || nameRegex.hasMatch(value)) &&

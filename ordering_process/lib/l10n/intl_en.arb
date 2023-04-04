@@ -5,5 +5,55 @@
 
     "@_Shipping_Label_Screen": {},
     "shippingLabelScreenAppBarTitle": "Select package size",
-    "shippingLabelToastMessage": "Please select a label"
+    "shippingLabelToastMessage": "Please select a label",
+
+    "@_Group_Button_Item": {},
+    "sizeTitle": "Size: {size}",
+    "weightTitle": "Weight: {weight} kg",
+    "priceTitle": "Price: {price} Euro",
+
+    "@_Navigation_Buttons": {},
+    "backButtonTitle": "Back",
+    "nextButtonTitle": "Next",
+
+    "@_Contact_Form": {},
+    "contactFormAppBarTitle": "Contact form",
+    "recipientTitle": "Recipient",
+    "senderTitle": "Sender",
+    "contactFormToastMessage": "Please try again",
+
+    "@_Form_Widget": {},
+    "firstnameTitle": "Firstname (Optional)",
+    "lastnameTitle": "Lastname*",
+    "streetTitle": "Street*",
+    "numberTitle": "Nr.*",
+    "postcodeTitle": "Postcode*",
+    "cityTitle": "City*",
+    "emailTitle": "E-Mail (Optional)",
+    "firstnameErrorMessage": "Please enter a valid first name",
+    "lastnameErrorMessage": "Please enter a valid last name",
+    "streetErrorMessage": "Please enter a valid street",
+    "numberErrorMessage": "Please enter a valid house number",
+    "postcodeErrorMessage": "Please enter a valid zip code",
+    "cityErrorMessage": "Please enter a valid place of residence",
+    "emailErrorMessage": "Please enter a valid email",
+
+    "@_Personal_Total_Data_View": {},
+    "firstnameOverviewTitle": "Firstname: ",
+    "lastnameOverviewTitle": "Lastname: ",
+    "streetOverviewTitle": "Street: ",
+    "numberOverviewTitle": "House number: ",
+    "postcodeOverviewTitle": "Postcode: ",
+    "cityOverviewTitle": "City: ",
+    "emailOverviewTitle": "E-Mail: ",
+
+    "@_Overview_Screen": {},
+    "overviewAppbarTitle": "Overview",
+    "labelOverviewTitle": "Label: ",
+    "sizeOverviewTitle": "Size: ",
+    "weightOverviewTitle": "Weight: ",
+    "weightValueOverviewTitle": " kg",
+    "priceOverviewTitle": "Price: ",
+    "priceValueOverviewTitle": " €",
+    "createLabelButtonTitle": "Create label"
 }
