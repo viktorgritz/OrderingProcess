@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ordering_process/ShippingLabel/shipping_label.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -16,18 +15,21 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed('/shipping_label'),
-                child: const Text('Versandlabel erstellen'),
-              ),
-            ],
+      body: Container(
+        color: Colors.grey[200],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed('/shipping_label'),
+                  child: const Text('Versandlabel erstellen'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

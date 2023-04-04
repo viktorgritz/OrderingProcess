@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/total_information.dart';
+import 'package:ordering_process/constants/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import 'custom_text_form_field.dart';
@@ -7,7 +8,7 @@ import 'custom_text_form_field.dart';
 class FormWidget extends StatelessWidget {
   final String title;
   final GlobalKey<FormState> formKey;
-  FormWidget({
+  const FormWidget({
     required this.title,
     required this.formKey,
     Key? key,
@@ -36,8 +37,7 @@ class FormWidget extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   label: 'Vorname (Optional)',
-                  //TODO replace regex for name or for email
-                  regex: '[^a-zA-Z]',
+                  regex: FormRegex.plainTextRegex,
                   errorMessage: 'Bitte geben Sie einen gültigen Vornamen ein',
                   isRequired: false,
                   callback: (value) => title == 'Empfänger'
@@ -46,7 +46,7 @@ class FormWidget extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   label: 'Nachname*',
-                  regex: '[^a-zA-Z]',
+                  regex: FormRegex.plainTextRegex,
                   errorMessage: 'Bitte geben Sie einen gültigen Nachnamen ein',
                   callback: (value) => title == 'Empfänger'
                       ? totalInformation.recipient.lastName = value
@@ -58,9 +58,9 @@ class FormWidget extends StatelessWidget {
                       flex: 5,
                       child: CustomTextFormField(
                         label: 'Straße*',
-                        regex: '[^a-zA-Z-ÄÖÜäöüß]',
+                        regex: FormRegex.streetRegex,
                         errorMessage:
-                            'Bitte geben Sie einen gültigen Nachnamen ein',
+                            'Bitte geben Sie einen gültigen Straße ein',
                         callback: (value) => title == 'Empfänger'
                             ? totalInformation.recipient.street = value
                             : totalInformation.sender.street = value,
@@ -73,7 +73,7 @@ class FormWidget extends StatelessWidget {
                       flex: 1,
                       child: CustomTextFormField(
                         label: 'Nr.*',
-                        regex: '[^0-9a-z]',
+                        regex: FormRegex.numberRegex,
                         errorMessage:
                             'Bitte geben Sie einen gültigen Nachnamen ein',
                         callback: (value) => title == 'Empfänger'
@@ -85,7 +85,7 @@ class FormWidget extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   label: 'PLZ*',
-                  regex: '[^0-9]',
+                  regex: FormRegex.postcodeRegex,
                   errorMessage: 'Bitte geben Sie einen gültigen PLZ ein',
                   textLength: 5,
                   textType: TextInputType.number,
@@ -95,7 +95,7 @@ class FormWidget extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   label: 'Wohnort*',
-                  regex: '[^a-zA-Z]',
+                  regex: FormRegex.plainTextRegex,
                   errorMessage: 'Bitte geben Sie einen gültigen Wohnort ein',
                   callback: (value) => title == 'Empfänger'
                       ? totalInformation.recipient.city = value
@@ -103,8 +103,7 @@ class FormWidget extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   label: 'Email (Optional)',
-                  regex:
-                      '[A-Za-z0-9\-\_\.\+]{1,64}@[A-Za-z0-9\-\_\.]+\.[a-zA-Z]+',
+                  regex: FormRegex.emailRegex,
                   errorMessage: 'Bitte geben Sie einen gültigen Email ein',
                   isRequired: false,
                   callback: (value) => title == 'Empfänger'

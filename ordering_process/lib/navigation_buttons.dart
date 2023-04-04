@@ -11,23 +11,26 @@ class NavigationButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        ElevatedButton(
-          onPressed: () {
-            backButton();
-          },
-          child: Text('Zurück'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            nextButton();
-          },
-          child: Text('Weiter'),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 28.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              backButton();
+            },
+            child: Text('Zurück'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              nextButton();
+            },
+            child: Text('Weiter'),
+          ),
+        ],
+      ),
     );
   }
 }
