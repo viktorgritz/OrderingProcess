@@ -36,14 +36,26 @@ class CustomTextFormField extends StatelessWidget {
         ),
         validator: (value) {
           RegExp nameRegex = RegExp(regex);
+          if (label.contains('Email')) {
+            if (value != null &&
+                value.isNotEmpty &&
+                !isRequired &&
+                !nameRegex.hasMatch(value)) {
+              return errorMessage;
+            } else {
+              if (value != null) {
+                callback(value);
+              }
+              return null;
+            }
+          }
           if ((value == null || value.isEmpty || nameRegex.hasMatch(value)) &&
               isRequired) {
             return errorMessage;
           } else if (value != null &&
               value.isNotEmpty &&
               !isRequired &&
-              //TODO maybe replace negation
-              !nameRegex.hasMatch(value)) {
+              nameRegex.hasMatch(value)) {
             return errorMessage;
           } else {
             if (value != null) {

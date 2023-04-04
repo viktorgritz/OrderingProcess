@@ -17,15 +17,18 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed('/shipping_label'),
-              child: Text('Versandlabel erstellen'),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/shipping_label'),
+                child: const Text('Versandlabel erstellen'),
+              ),
+            ],
+          ),
         ),
       ),
     );

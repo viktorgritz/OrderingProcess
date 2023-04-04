@@ -58,7 +58,7 @@ class FormWidget extends StatelessWidget {
                       flex: 5,
                       child: CustomTextFormField(
                         label: 'Straße*',
-                        regex: '[^a-zA-Z]',
+                        regex: '[^a-zA-Z-ÄÖÜäöüß]',
                         errorMessage:
                             'Bitte geben Sie einen gültigen Nachnamen ein',
                         callback: (value) => title == 'Empfänger'

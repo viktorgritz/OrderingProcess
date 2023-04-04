@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         home: const HomeScreen(title: 'Flutter Dev Challenge'),
         routes: {
-          '/shipping_label': (context) => const ShippingLabel(),
+          '/shipping_label': (context) => ShippingLabel(),
           '/contact_form': (context) => ContactForm(),
           '/overview_screen': (context) => const OverviewScreen(),
         },

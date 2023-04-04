@@ -79,6 +79,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.2.1"
+  group_button:
+    dependency: "direct main"
+    description:
+      name: group_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.2"
   js:
     dependency: transitive
     description:

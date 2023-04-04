@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ordering_process/Model/label.dart';
 import 'package:ordering_process/Model/total_information.dart';
 import 'package:ordering_process/model/person.dart';
 import 'package:ordering_process/navigation_buttons.dart';
@@ -21,7 +22,7 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
-    final shippingLabel = ModalRoute.of(context)!.settings.arguments as String;
+    final shippingLabel = ModalRoute.of(context)!.settings.arguments as Label;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -44,13 +45,13 @@ class _ContactFormState extends State<ContactForm> {
                     return NavigationButtons(
                       backButton: () => Navigator.of(context).pop(),
                       nextButton: () {
-                        if (widget._formKeyE.currentState!.validate() &&
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        if (widget._formKeyE.currentState!.validate() &
                             widget._formKeyA.currentState!.validate()) {
-                          //print(person.firstName);
-                          //print(person.firstName);
-
-                          Navigator.of(context).pushNamed('/overview_screen',
-                              arguments: totalInformation);
+                          Navigator.of(context).pushNamed(
+                            '/overview_screen',
+                            arguments: totalInformation,
+                          );
                         } else {
                           Fluttertoast.showToast(
                               msg: 'Something went wrong, please try again');
