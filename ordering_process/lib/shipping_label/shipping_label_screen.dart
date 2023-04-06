@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ordering_process/Model/label.dart';
+import 'package:ordering_process/constants/app_constants.dart';
 import 'package:ordering_process/generated/l10n.dart';
 import 'package:ordering_process/navigation_buttons.dart';
 
@@ -35,7 +36,7 @@ class _ShippingLabelScreenState extends State<ShippingLabelScreen> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: DefaultInsets.paddingAll18,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

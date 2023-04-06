@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/label.dart';
+import 'package:ordering_process/constants/app_constants.dart';
 import 'package:ordering_process/generated/l10n.dart';
 
 class GroupButtonItem extends StatelessWidget {
@@ -16,7 +17,7 @@ class GroupButtonItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: DefaultInsets.paddingAll8,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -31,7 +32,7 @@ class GroupButtonItem extends StatelessWidget {
         borderRadius: BorderRadiusDirectional.circular(10),
         color: isSelected ? Colors.lightBlue[100] : Colors.white,
       ),
-      padding: const EdgeInsets.all(18),
+      padding: DefaultInsets.paddingAll18,
       width: width,
       height: width,
       child: Center(

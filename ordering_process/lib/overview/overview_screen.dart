@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ordering_process/Model/total_information.dart';
 import 'package:ordering_process/Overview/person_total_data_view.dart';
+import 'package:ordering_process/constants/app_constants.dart';
 import 'package:ordering_process/generated/l10n.dart';
 
 class OverviewScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class OverviewScreen extends StatelessWidget {
         title: Text(S.of(context).overviewAppbarTitle),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: DefaultInsets.paddingAll8,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -27,7 +28,9 @@ class OverviewScreen extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 48, vertical: 18),
+                      horizontal: 38,
+                      vertical: 18,
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         border: Border.all(),
@@ -53,12 +56,12 @@ class OverviewScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: DefaultInsets.paddingAll18,
                   child: Text(S.of(context).recipientTitle),
                 ),
                 PersonTotalDataView(person: totalInformation.recipient),
                 Padding(
-                  padding: EdgeInsets.all(18.0),
+                  padding: DefaultInsets.paddingAll18,
                   child: Text(S.of(context).senderTitle),
                 ),
                 PersonTotalDataView(person: totalInformation.sender),
