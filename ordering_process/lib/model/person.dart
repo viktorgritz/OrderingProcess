@@ -7,5 +7,13 @@ class Person {
   late String city;
   late String? email;
 
-  Person();
+  Person() {
+    firstName = '';
+    lastName = '';
+    street = '';
+    houseNumber = '';
+    postcode = '';
+    city = '';
+    email = '';
+  }
 }

@@ -10,6 +10,7 @@ class FormRegex {
 }
 
 class DefaultInsets {
+  static const marginAll2 = EdgeInsets.all(2);
   static const paddingAll8 = EdgeInsets.all(8);
   static const paddingAll18 = EdgeInsets.all(18);
 }

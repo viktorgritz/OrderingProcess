@@ -20,13 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.grey[200],
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 ElevatedButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed('/shipping_label'),
+                  onPressed: () => Navigator.of(context)
+                      .pushNamed('/ordering_process_screen'),
                   child: Text(S.of(context).createLabelButtonTitle),
                 ),
               ],

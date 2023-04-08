@@ -9,7 +9,7 @@ class ContactFormController {
   ) {
     RegExp nameRegex = RegExp(regex);
     if (label.contains('E-Mail')) {
-      return validateEmail(value, nameRegex, errorMessage, callback);
+      return _validateEmail(value, nameRegex, errorMessage, callback);
     }
     if ((value == null || value.trim().isEmpty || nameRegex.hasMatch(value)) &&
         isRequired) {
@@ -27,7 +27,7 @@ class ContactFormController {
     }
   }
 
-  String? validateEmail(
+  String? _validateEmail(
     String? value,
     RegExp nameRegex,
     String errorMessage,

@@ -4,6 +4,7 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        minimumSize: const Size(150, 20),
         elevation: 5,
         foregroundColor: Colors.white,
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

@@ -5,19 +5,18 @@ import 'package:ordering_process/generated/l10n.dart';
 
 class GroupButtonItem extends StatelessWidget {
   final bool isSelected;
-  final double width;
   final Label labelItem;
   const GroupButtonItem({
     required this.isSelected,
-    required this.width,
     required this.labelItem,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width / 2.5;
     return Container(
-      margin: DefaultInsets.paddingAll8,
+      margin: DefaultInsets.marginAll2,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -33,8 +32,8 @@ class GroupButtonItem extends StatelessWidget {
         color: isSelected ? Colors.lightBlue[100] : Colors.white,
       ),
       padding: DefaultInsets.paddingAll18,
-      width: width,
-      height: width,
+      width: screenWidth,
+      height: screenWidth,
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +51,7 @@ class GroupButtonItem extends StatelessWidget {
             ),
             Text(S.of(context).sizeTitle(labelItem.size)),
             Text(S.of(context).weightTitle(labelItem.weight)),
-            Text(S.of(context).priceTitle(labelItem.preis)),
+            FittedBox(child: Text(S.of(context).priceTitle(labelItem.preis))),
           ],
         ),
       ),

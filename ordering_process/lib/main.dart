@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'Overview/overview_screen.dart';
 import 'contact_form/contact_form_screen.dart';
 import 'generated/l10n.dart';
+import 'ordering_process_screen.dart';
 import 'theme/app_themes.dart';
 
 void main() {
@@ -26,9 +27,10 @@ class MyApp extends StatelessWidget {
         theme: AppThemes.lightTheme,
         home: const HomeScreen(),
         routes: {
-          '/shipping_label': (context) => ShippingLabelScreen(),
-          '/contact_form': (context) => ContactFormScreen(),
-          '/overview_screen': (context) => const OverviewScreen(),
+          //'/shipping_label': (context) => ShippingLabelScreen(),
+          //'/contact_form': (context) => ContactFormScreen(),
+          //'/overview_screen': (context) => const OverviewScreen(),
+          '/ordering_process_screen': (context) => OrderingProcessScreen(),
         },
         localizationsDelegates: const [
           S.delegate,
