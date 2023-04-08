@@ -29,14 +29,11 @@ class FormWidget extends StatelessWidget {
             return Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      title,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
+                  padding: DefaultInsets.paddingAll8,
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 24),
                   ),
                 ),
                 CustomTextFormField(
