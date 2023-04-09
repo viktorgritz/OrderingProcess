@@ -9,4 +9,11 @@ class TotalInformation with ChangeNotifier {
   late Person sender = Person();
 
   TotalInformation();
+
+  void clearTotalInformation() {
+    label = Label.empty();
+    recipient = Person();
+    sender = Person();
+    notifyListeners();
+  }
 }

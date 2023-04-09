@@ -21,7 +21,9 @@ class OverviewScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 28.0, vertical: 12),
+                    horizontal: 28.0,
+                    vertical: 12,
+                  ),
                   child: Stack(
                     alignment: Alignment.topCenter,
                     children: <Widget>[

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ordering_process/Model/total_information.dart';
 import 'package:ordering_process/Overview/overview_screen.dart';
+import 'package:ordering_process/model/stepper_provider.dart';
 import 'package:ordering_process/shipping_label/shipping_label_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,63 +19,75 @@ class OrderingProcessScreen extends StatefulWidget {
 }
 
 class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
-  int _currentStep = 0;
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          color: Colors.grey[200],
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Stepper(
-                  controlsBuilder: (context, details) {
-                    return buildStepperControls();
-                  },
-                  physics: const ScrollPhysics(),
-                  type: StepperType.horizontal,
-                  currentStep: _currentStep,
-                  onStepTapped: (step) => onStepTupped(step),
-                  steps: getSteps(),
+    return ChangeNotifierProvider<StepperProvider>(
+      create: (context) => StepperProvider(),
+      child: SafeArea(
+        child: Scaffold(
+          body: Container(
+            color: Colors.grey[200],
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: Consumer<StepperProvider>(
+                    builder: (context, stepperProvider, child) {
+                      return Stepper(
+                        controlsBuilder: (context, details) {
+                          return buildStepperControls(stepperProvider);
+                        },
+                        physics: const ScrollPhysics(),
+                        type: StepperType.horizontal,
+                        currentStep: stepperProvider.currentStep,
+                        onStepTapped: (step) =>
+                            onStepTupped(stepperProvider, step),
+                        steps: getSteps(stepperProvider),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Padding buildStepperControls() {
+  Padding buildStepperControls(StepperProvider stepperProvider) {
+    final currentStep = stepperProvider.currentStep;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Consumer<TotalInformation>(
         builder: (context, totalInformation, child) {
           return Row(
-            mainAxisAlignment: _currentStep != 2
+            mainAxisAlignment: currentStep != 2
                 ? MainAxisAlignment.spaceBetween
                 : MainAxisAlignment.center,
             children: <Widget>[
-              _currentStep != 2
+              currentStep != 2
                   ? ElevatedButton(
-                      onPressed: () => cancel(),
-                      child: const Text('cancel'),
+                      onPressed: () =>
+                          cancel(stepperProvider, totalInformation, context),
+                      child: const Text('Cancel'),
                     )
                   : ElevatedButton(
-                      onPressed: () => Fluttertoast.showToast(
-                        msg: 'Label created',
-                        backgroundColor: Colors.deepOrange,
-                      ),
+                      onPressed: () {
+                        Fluttertoast.showToast(
+                          msg: 'Label created',
+                          backgroundColor: Colors.deepOrange,
+                        );
+                        _resetData(stepperProvider, totalInformation);
+                      },
                       child: Text(
                         S.of(context).createLabelButtonTitle,
                       ),
                     ),
-              _currentStep != 2
+              currentStep != 2
                   ? ElevatedButton(
-                      onPressed: () => continued(totalInformation),
-                      child: Text('Continue'),
+                      onPressed: () =>
+                          continued(stepperProvider, totalInformation),
+                      child: const Text('Continue'),
                     )
                   : Container(),
             ],
@@ -84,18 +97,19 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
     );
   }
 
-  List<Step> getSteps() {
+  List<Step> getSteps(StepperProvider stepperProvider) {
+    final currentStep = stepperProvider.currentStep;
     return <Step>[
       Step(
         title: Text(
           'Label',
           style: TextStyle(
-            color: _currentStep >= 0 ? Colors.black : Colors.blue,
+            color: currentStep >= 0 ? Colors.black : Colors.blue,
           ),
         ),
         content: ShippingLabelScreen(),
-        isActive: _currentStep >= 0,
-        state: _currentStep >= 0 ? StepState.complete : StepState.disabled,
+        isActive: currentStep >= 0,
+        state: currentStep >= 0 ? StepState.complete : StepState.disabled,
       ),
       Step(
         title: const Text(
@@ -106,8 +120,8 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
           formKeyE: widget._formKeyE,
           formKeyA: widget._formKeyA,
         ),
-        isActive: _currentStep >= 0,
-        state: _currentStep >= 1 ? StepState.disabled : StepState.disabled,
+        isActive: currentStep >= 1,
+        state: currentStep >= 1 ? StepState.complete : StepState.disabled,
       ),
       Step(
         title: const Text(
@@ -115,37 +129,39 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
           style: TextStyle(color: Colors.black),
         ),
         content: OverviewScreen(),
-        isActive: _currentStep >= 0,
-        state: _currentStep >= 2 ? StepState.complete : StepState.disabled,
+        isActive: currentStep >= 2,
+        state: currentStep >= 2 ? StepState.complete : StepState.disabled,
       ),
     ];
   }
 
-  void onStepTupped(int step) {
-    setState(() {
-      _currentStep = step;
-    });
+  void onStepTupped(
+    StepperProvider stepperProvider,
+    int step,
+  ) {
+    stepperProvider.setCurrentStep(step);
   }
 
-  void continued(TotalInformation totalInformation) {
-    _currentStep < 2
-        ? setState(() {
-            if (_currentStep == 0) {
-              return checkForStepOne(totalInformation);
-            }
-            if (_currentStep == 1) {
-              return checkForStepTwo();
-            }
-            _currentStep += 1;
-          })
-        : null;
+  void continued(
+    StepperProvider stepperProvider,
+    TotalInformation totalInformation,
+  ) {
+    if (stepperProvider.currentStep < 2) {
+      if (stepperProvider.currentStep == 0) {
+        return checkForStepOne(totalInformation, stepperProvider);
+      }
+      if (stepperProvider.currentStep == 1) {
+        return checkForStepTwo(stepperProvider);
+      }
+      stepperProvider.nextStep();
+    }
   }
 
-  void checkForStepTwo() {
+  void checkForStepTwo(StepperProvider stepperProvider) {
     if (widget._formKeyE.currentState!.validate() &
         widget._formKeyA.currentState!.validate()) {
       FocusManager.instance.primaryFocus?.unfocus();
-      _currentStep += 1;
+      stepperProvider.nextStep();
       return;
     } else {
       Fluttertoast.showToast(
@@ -156,9 +172,12 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
     }
   }
 
-  void checkForStepOne(TotalInformation totalInformation) {
+  void checkForStepOne(
+    TotalInformation totalInformation,
+    StepperProvider stepperProvider,
+  ) {
     if (totalInformation.label.size.isNotEmpty) {
-      _currentStep += 1;
+      stepperProvider.nextStep();
       return;
     } else {
       Fluttertoast.showToast(
@@ -169,7 +188,24 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
     }
   }
 
-  void cancel() {
-    _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
+  void cancel(
+    StepperProvider stepperProvider,
+    TotalInformation totalInformation,
+    BuildContext context,
+  ) {
+    if (stepperProvider.currentStep >= 0) {
+      if (stepperProvider.currentStep == 0) {
+        _resetData(stepperProvider, totalInformation);
+      } else {
+        stepperProvider.previousStep();
+      }
+    }
+  }
+
+  void _resetData(
+      StepperProvider stepperProvider, TotalInformation totalInformation) {
+    stepperProvider.setCurrentStep(0);
+    totalInformation.clearTotalInformation();
+    Navigator.of(context).pop();
   }
 }
