@@ -33,6 +33,7 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
                   child: Consumer<StepperProvider>(
                     builder: (context, stepperProvider, child) {
                       return Stepper(
+                        elevation: 5,
                         controlsBuilder: (context, details) {
                           return buildStepperControls(stepperProvider);
                         },
@@ -40,7 +41,7 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
                         type: StepperType.horizontal,
                         currentStep: stepperProvider.currentStep,
                         onStepTapped: (step) =>
-                            onStepTupped(stepperProvider, step),
+                            onStepTapped(stepperProvider, step),
                         steps: getSteps(stepperProvider),
                       );
                     },
@@ -69,12 +70,12 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
                   ? ElevatedButton(
                       onPressed: () =>
                           cancel(stepperProvider, totalInformation, context),
-                      child: const Text('Cancel'),
+                      child: Text(S.of(context).backButtonTitle),
                     )
                   : ElevatedButton(
                       onPressed: () {
                         Fluttertoast.showToast(
-                          msg: 'Label created',
+                          msg: S.of(context).createdLabelTitle,
                           backgroundColor: Colors.deepOrange,
                         );
                         _resetData(stepperProvider, totalInformation);
@@ -87,7 +88,7 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
                   ? ElevatedButton(
                       onPressed: () =>
                           continued(stepperProvider, totalInformation),
-                      child: const Text('Continue'),
+                      child: Text(S.of(context).nextButtonTitle),
                     )
                   : Container(),
             ],
@@ -102,40 +103,44 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
     return <Step>[
       Step(
         title: Text(
-          'Label',
+          S.of(context).stepLabel,
           style: TextStyle(
-            color: currentStep >= 0 ? Colors.black : Colors.blue,
+            color: currentStep == 0 ? Colors.blue : Colors.grey,
           ),
         ),
         content: ShippingLabelScreen(),
         isActive: currentStep >= 0,
-        state: currentStep >= 0 ? StepState.complete : StepState.disabled,
+        state: currentStep >= 1 ? StepState.complete : StepState.disabled,
       ),
       Step(
-        title: const Text(
-          'Contact',
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          S.of(context).stepContact,
+          style: TextStyle(
+            color: currentStep == 1 ? Colors.blue : Colors.grey,
+          ),
         ),
         content: ContactFormScreen(
           formKeyE: widget._formKeyE,
           formKeyA: widget._formKeyA,
         ),
         isActive: currentStep >= 1,
-        state: currentStep >= 1 ? StepState.complete : StepState.disabled,
+        state: currentStep >= 2 ? StepState.complete : StepState.disabled,
       ),
       Step(
-        title: const Text(
-          'Overview',
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          S.of(context).stepOverview,
+          style: TextStyle(
+            color: currentStep == 2 ? Colors.blue : Colors.grey,
+          ),
         ),
         content: OverviewScreen(),
         isActive: currentStep >= 2,
-        state: currentStep >= 2 ? StepState.complete : StepState.disabled,
+        state: currentStep >= 3 ? StepState.complete : StepState.disabled,
       ),
     ];
   }
 
-  void onStepTupped(
+  void onStepTapped(
     StepperProvider stepperProvider,
     int step,
   ) {
@@ -203,7 +208,9 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
   }
 
   void _resetData(
-      StepperProvider stepperProvider, TotalInformation totalInformation) {
+    StepperProvider stepperProvider,
+    TotalInformation totalInformation,
+  ) {
     stepperProvider.setCurrentStep(0);
     totalInformation.clearTotalInformation();
     Navigator.of(context).pop();

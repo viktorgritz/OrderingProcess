@@ -55,5 +55,11 @@
     "weightValueOverviewTitle": " kg",
     "priceOverviewTitle": "Preis: ",
     "priceValueOverviewTitle": " €",
-    "createLabelButtonTitle": "Paketschein erstellen"
+    "createLabelButtonTitle": "Paketschein erstellen",
+    "createdLabelTitle": "Paketschein erstellt",
+
+    "@_Steps_title": {},
+    "stepLabel": "Paketschein",
+    "stepContact": "Kontakt",
+    "stepOverview": "Übersicht"
 }

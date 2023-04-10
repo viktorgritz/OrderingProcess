@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please try again"),
         "createLabelButtonTitle":
             MessageLookupByLibrary.simpleMessage("Create label"),
+        "createdLabelTitle":
+            MessageLookupByLibrary.simpleMessage("Label created"),
         "emailErrorMessage":
             MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
         "emailOverviewTitle": MessageLookupByLibrary.simpleMessage("E-Mail: "),
@@ -80,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select a label"),
         "sizeOverviewTitle": MessageLookupByLibrary.simpleMessage("Size: "),
         "sizeTitle": m1,
+        "stepContact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "stepLabel": MessageLookupByLibrary.simpleMessage("Label"),
+        "stepOverview": MessageLookupByLibrary.simpleMessage("Overview"),
         "streetErrorMessage":
             MessageLookupByLibrary.simpleMessage("Please enter a valid street"),
         "streetOverviewTitle": MessageLookupByLibrary.simpleMessage("Street: "),

@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bitte versuchen Sie es nochmal"),
         "createLabelButtonTitle":
             MessageLookupByLibrary.simpleMessage("Paketschein erstellen"),
+        "createdLabelTitle":
+            MessageLookupByLibrary.simpleMessage("Paketschein erstellt"),
         "emailErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Bitte geben Sie einen gültigen E-Mail ein"),
         "emailOverviewTitle": MessageLookupByLibrary.simpleMessage("E-Mail: "),
@@ -80,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bitte wählen Sie ein Label aus"),
         "sizeOverviewTitle": MessageLookupByLibrary.simpleMessage("Größe: "),
         "sizeTitle": m1,
+        "stepContact": MessageLookupByLibrary.simpleMessage("Kontakt"),
+        "stepLabel": MessageLookupByLibrary.simpleMessage("Paketschein"),
+        "stepOverview": MessageLookupByLibrary.simpleMessage("Übersicht"),
         "streetErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Bitte geben Sie einer gültigen Straße ein"),
         "streetOverviewTitle": MessageLookupByLibrary.simpleMessage("Straße: "),

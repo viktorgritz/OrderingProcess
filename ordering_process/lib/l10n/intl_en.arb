@@ -55,5 +55,11 @@
     "weightValueOverviewTitle": " kg",
     "priceOverviewTitle": "Price: ",
     "priceValueOverviewTitle": " €",
-    "createLabelButtonTitle": "Create label"
+    "createLabelButtonTitle": "Create label",
+    "createdLabelTitle": "Label created",
+
+    "@_Steps_title": {},
+    "stepLabel": "Label",
+    "stepContact": "Contact",
+    "stepOverview": "Overview"
 }

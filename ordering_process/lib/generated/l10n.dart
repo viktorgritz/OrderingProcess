@@ -459,6 +459,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Label created`
+  String get createdLabelTitle {
+    return Intl.message(
+      'Label created',
+      name: 'createdLabelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Label`
+  String get stepLabel {
+    return Intl.message(
+      'Label',
+      name: 'stepLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get stepContact {
+    return Intl.message(
+      'Contact',
+      name: 'stepContact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get stepOverview {
+    return Intl.message(
+      'Overview',
+      name: 'stepOverview',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
