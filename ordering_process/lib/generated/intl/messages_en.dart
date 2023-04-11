@@ -76,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceValueOverviewTitle": MessageLookupByLibrary.simpleMessage(" €"),
         "recipientTitle": MessageLookupByLibrary.simpleMessage("Recipient"),
         "senderTitle": MessageLookupByLibrary.simpleMessage("Sender"),
+        "shipmentId": MessageLookupByLibrary.simpleMessage("Shipment-ID: "),
         "shippingLabelScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Select package size"),
         "shippingLabelToastMessage":

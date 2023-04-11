@@ -57,6 +57,7 @@
     "priceValueOverviewTitle": " €",
     "createLabelButtonTitle": "Create label",
     "createdLabelTitle": "Label created",
+    "shipmentId": "Shipment-ID: ",
 
     "@_Steps_title": {},
     "stepLabel": "Label",

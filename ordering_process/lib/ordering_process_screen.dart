@@ -156,16 +156,18 @@ class _OrderingProcessScreenState extends State<OrderingProcessScreen> {
         return checkForStepOne(totalInformation, stepperProvider);
       }
       if (stepperProvider.currentStep == 1) {
-        return checkForStepTwo(stepperProvider);
+        return checkForStepTwo(stepperProvider, totalInformation);
       }
       stepperProvider.nextStep();
     }
   }
 
-  void checkForStepTwo(StepperProvider stepperProvider) {
+  void checkForStepTwo(
+      StepperProvider stepperProvider, TotalInformation totalInformation) {
     if (widget._formKeyE.currentState!.validate() &
         widget._formKeyA.currentState!.validate()) {
       FocusManager.instance.primaryFocus?.unfocus();
+      totalInformation.createShipmentId();
       stepperProvider.nextStep();
       return;
     } else {

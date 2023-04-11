@@ -23,9 +23,9 @@ class _ShippingLabelScreenState extends State<ShippingLabelScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Padding(
-        padding: EdgeInsets.all(2),
+        padding: const EdgeInsets.all(2),
         child: Consumer<TotalInformation>(
           builder: (context, totalInformation, child) {
             return Column(

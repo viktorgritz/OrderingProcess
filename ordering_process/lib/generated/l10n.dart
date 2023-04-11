@@ -470,6 +470,16 @@ class S {
     );
   }
 
+  /// `Shipment-ID: `
+  String get shipmentId {
+    return Intl.message(
+      'Shipment-ID: ',
+      name: 'shipmentId',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Label`
   String get stepLabel {
     return Intl.message(

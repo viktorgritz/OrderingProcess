@@ -43,6 +43,7 @@ dependencies:
   group_button: ^5.2.2
   intl_utils: ^2.8.2
   intl: ^0.17.0
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

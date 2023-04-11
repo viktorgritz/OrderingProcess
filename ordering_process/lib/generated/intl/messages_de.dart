@@ -53,7 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vorname (Optional)"),
         "homeScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Flutter Dev Challenge"),
-        "labelOverviewTitle": MessageLookupByLibrary.simpleMessage("Label:"),
+        "labelOverviewTitle":
+            MessageLookupByLibrary.simpleMessage("Paketschein:"),
         "lastnameErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Bitte geben Sie einen gültigen Nachnamen ein"),
         "lastnameOverviewTitle":
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceValueOverviewTitle": MessageLookupByLibrary.simpleMessage(" €"),
         "recipientTitle": MessageLookupByLibrary.simpleMessage("Empfänger"),
         "senderTitle": MessageLookupByLibrary.simpleMessage("Absender"),
+        "shipmentId": MessageLookupByLibrary.simpleMessage("Sendungs-ID: "),
         "shippingLabelScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Paket Größe auswählen"),
         "shippingLabelToastMessage": MessageLookupByLibrary.simpleMessage(
